@@ -123,7 +123,7 @@ text = "PLAYER PLAYGROUND  /  M1"
 layout_mode = 2
 theme_override_colors/font_color = Color(0.86, 0.9, 0.92, 1)
 theme_override_font_sizes/font_size = 18
-text = "A / D  MOVE    SPACE  JUMP · FLAP · HOLD GLIDE    S  DIVE    R  RESET"
+text = "A / D or ← / →  MOVE    SPACE or ↑  JUMP · FLAP · GLIDE    S or ↓  DIVE    R  RESET"
 
 [node name="State" type="Label" parent="UI/Margin/VBox"]
 layout_mode = 2

@@ -86,9 +86,9 @@ Accepted.
 ## DEC-007 - Initial Wing Control Scheme
 
 Decision:
-For the M1 prototype, Space is contextual: press to jump, press once while
-airborne to flap, and hold after the flap while descending to glide. S or Down
-prototypes a dive.
+For the M1 prototype, Space or Up is contextual: press to jump, press once
+while airborne to flap, and hold after the flap while descending to glide. S
+or Down prototypes a dive. Movement supports A/D and Left/Right.
 
 Reason:
 This keeps the complete traversal prototype playable with the initial keyboard

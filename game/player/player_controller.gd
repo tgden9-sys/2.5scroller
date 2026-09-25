@@ -12,6 +12,7 @@ signal movement_state_changed(state: StringName)
 @export var air_acceleration := 24.0
 @export var air_deceleration := 12.0
 @export var air_speed_multiplier := 0.9
+@export var fall_gravity_multiplier := 1.65
 
 @export_category("Jump")
 @export var jump_velocity := 12.0
@@ -24,8 +25,8 @@ signal movement_state_changed(state: StringName)
 @export var flap_horizontal_boost := 1.5
 @export var glide_fall_speed := 2.4
 @export var glide_gravity_multiplier := 0.18
-@export var dive_gravity_multiplier := 2.2
-@export var dive_max_speed := 18.0
+@export var dive_gravity_multiplier := 4.0
+@export var dive_max_speed := 28.0
 
 @export_category("Safety")
 @export var fall_reset_y := -18.0
@@ -101,7 +102,8 @@ func _apply_vertical_movement(delta: float, was_on_floor: bool) -> void:
 		elif Input.is_action_pressed("jump") and velocity.y <= 0.0 and not _flap_available:
 			velocity.y = maxf(velocity.y - _gravity * glide_gravity_multiplier * delta, -glide_fall_speed)
 		else:
-			velocity.y -= _gravity * delta
+			var gravity_multiplier := fall_gravity_multiplier if velocity.y <= 0.0 else 1.0
+			velocity.y -= _gravity * gravity_multiplier * delta
 
 func lock_to_gameplay_plane() -> void:
 	global_position.z = 0.0

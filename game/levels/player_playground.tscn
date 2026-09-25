@@ -1,15 +1,16 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=16 format=3]
 
 [ext_resource type="PackedScene" path="res://game/player/player.tscn" id="1"]
 [ext_resource type="Script" path="res://game/camera/player_camera.gd" id="2"]
 [ext_resource type="Script" path="res://game/levels/player_playground.gd" id="3"]
+[ext_resource type="Script" path="res://game/environment/forest_blockout.gd" id="4"]
 
 [sub_resource type="Environment" id="Environment"]
 background_mode = 1
-background_color = Color(0.055, 0.085, 0.12, 1)
+background_color = Color(0.035, 0.09, 0.09, 1)
 ambient_light_source = 3
-ambient_light_color = Color(0.48, 0.58, 0.7, 1)
-ambient_light_energy = 0.7
+ambient_light_color = Color(0.39, 0.56, 0.50, 1)
+ambient_light_energy = 0.62
 tonemap_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="GroundMaterial"]
@@ -52,9 +53,12 @@ environment = SubResource("Environment")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 rotation_degrees = Vector3(-48, -28, 0)
-light_color = Color(1, 0.88, 0.7, 1)
-light_energy = 1.35
+light_color = Color(1, 0.78, 0.48, 1)
+light_energy = 1.55
 shadow_enabled = true
+
+[node name="ForestBlockout" type="Node3D" parent="."]
+script = ExtResource("4")
 
 [node name="StartGround" type="StaticBody3D" parent="."]
 position = Vector3(-10, 0, 0)
@@ -178,7 +182,7 @@ theme_override_constants/separation = 8
 layout_mode = 2
 theme_override_colors/font_color = Color(0.94, 0.85, 0.63, 1)
 theme_override_font_sizes/font_size = 30
-text = "PLAYER PLAYGROUND  /  M1"
+text = "FOREST MOOD TEST  /  M3"
 
 [node name="Controls" type="Label" parent="UI/Margin/VBox"]
 layout_mode = 2

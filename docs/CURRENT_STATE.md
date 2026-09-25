@@ -2,7 +2,7 @@
 
 ## Milestone
 
-M2 - Web Proof (in development on `feature/player-playground`)
+M3 - Forest Art Test (in development on `feature/forest-blockout`)
 
 ## Working
 
@@ -28,11 +28,15 @@ M2 - Web Proof (in development on `feature/player-playground`)
 - Automatic checkpoint progression and safe fall recovery across the course.
 - Full browser course completed successfully by Tom, including the completion
   state. Movement feel and the M1/M2 baseline were approved.
+- M1/M2 pull request merged to `main` as the known-good baseline.
+- First procedural forest mood blockout added with layered trees, moss dressing,
+  rocks, foliage movement, water, waterfall and mist forms.
 
 ## In Development
 
-- Movement values and camera behaviour require hands-on playtesting and tuning.
-- Wing traversal behaviours are prototypes, not accepted final mechanics.
+- Forest composition, palette, scale and readability require hands-on playtesting.
+- The environment is deliberately made from lightweight procedural primitives;
+  selected production-quality nature assets are still to be evaluated.
 
 ## Known Issues
 
@@ -43,11 +47,10 @@ M2 - Web Proof (in development on `feature/player-playground`)
 
 ## Last Known-Good State
 
-`main` remains the initial project structure. M1 work is intentionally isolated on
-`feature/player-playground` pending Tom's playtest and approval.
+`main` contains the merged, Tom-tested M1/M2 player playground and browser proof.
+M3 work is isolated on `feature/forest-blockout`.
 
 ## Next Intended Task
 
-Review and merge the completed `feature/player-playground` pull request after
-final inspection. Begin M3 on a new `feature/forest-blockout` branch, preserving
-the approved player and web baseline.
+Playtest the first forest mood blockout in desktop and browser builds. Refine the
+composition before selecting any third-party nature assets.

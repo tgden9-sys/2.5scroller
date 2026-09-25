@@ -6,8 +6,8 @@ extends Node3D
 @export var landing_recovery_speed := 8.0
 
 @onready var controller: PlayerController = get_parent()
-@onready var left_wing: Node3D = $LeftWing
-@onready var right_wing: Node3D = $RightWing
+@onready var hero_sprite: Sprite3D = $HeroSprite
+@onready var flight_sprite: Sprite3D = $FlightSprite
 
 var _state: StringName = &"idle"
 var _time := 0.0
@@ -31,8 +31,11 @@ func _process(delta: float) -> void:
 
 	var target_rotation := _target_body_rotation()
 	rotation.z = lerp_angle(rotation.z, target_rotation, _blend_weight(delta))
-	rotation.y = lerp_angle(rotation.y, _facing_direction * PI * 0.5, _blend_weight(delta))
-	_update_wings(delta)
+	hero_sprite.flip_h = _facing_direction < 0.0
+	flight_sprite.flip_h = _facing_direction < 0.0
+	var show_flight := _state in [&"rise", &"fall", &"glide", &"dive"]
+	hero_sprite.visible = not show_flight
+	flight_sprite.visible = show_flight
 	_update_body_motion()
 
 func _target_body_rotation() -> float:
@@ -50,38 +53,15 @@ func _target_body_rotation() -> float:
 		_:
 			return 0.0
 
-func _update_wings(delta: float) -> void:
-	var left_target := 0.45
-	var right_target := -0.45
-	match _state:
-		&"idle":
-			left_target = 0.55 + sin(_time * 2.0) * 0.03
-			right_target = -left_target
-		&"run":
-			left_target = 0.38 + sin(_time * 9.0) * 0.08
-			right_target = -left_target
-		&"rise":
-			var flap := sin(_time * 17.0) * 0.65
-			left_target = 0.25 + flap
-			right_target = -0.25 - flap
-		&"glide":
-			left_target = 0.04
-			right_target = -0.04
-		&"dive":
-			left_target = 1.05
-			right_target = -1.05
-		&"fall":
-			left_target = 0.7
-			right_target = -0.7
-	var weight := _blend_weight(delta)
-	left_wing.rotation.z = lerp_angle(left_wing.rotation.z, left_target, weight)
-	right_wing.rotation.z = lerp_angle(right_wing.rotation.z, right_target, weight)
-
 func _update_body_motion() -> void:
 	var idle_bob := sin(_time * 2.4) * 0.025 if _state == &"idle" else 0.0
+	var run_bob := absf(sin(_time * 9.0)) * 0.045 if _state == &"run" else 0.0
 	position.y = idle_bob - _landing_squash * 0.45
-	var stretch := 1.0 + _landing_squash
-	var squash := 1.0 - _landing_squash
+	position.y += run_bob
+	var pose_stretch := 1.06 if _state == &"glide" else 1.0
+	var pose_squash := 0.92 if _state == &"dive" else 1.0
+	var stretch := pose_stretch + _landing_squash
+	var squash := pose_squash - _landing_squash
 	scale = Vector3(stretch, squash, stretch)
 
 func _blend_weight(delta: float) -> float:

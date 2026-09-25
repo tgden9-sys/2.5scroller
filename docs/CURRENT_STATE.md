@@ -13,7 +13,8 @@ M3/M5 - Forest gameplay vertical-slice prototype (in development on
 - Project documentation created.
 - Godot 4 project created with the Compatibility renderer.
 - Player Playground is the configured main scene.
-- Placeholder owl player with collision and a readable gameplay silhouette.
+- A polished original 2.5D owl hero render now replaces the primitive capsule
+  visual while preserving the proven 3D controller and collision underneath.
 - Constrained 2.5D horizontal movement with acceleration, deceleration and air control.
 - Jump foundations: variable height, coyote time and input buffering.
 - One-air-flap, hold-to-glide and down-to-dive prototypes.
@@ -64,8 +65,10 @@ M3/M5 - Forest gameplay vertical-slice prototype (in development on
 
 ## Known Issues
 
-- Placeholder animation uses simple procedural transforms and is not a replacement
-  for the future rigged owl or authored animation set.
+- The polished owl currently uses consistent high-quality grounded and wings-open
+  flight poses with procedural movement, facing, squash and tilt. Authored run,
+  flap, glide, dive and landing frame sequences—or a rigged 3D version of the
+  approved design—are still required.
 - A representative performance baseline must wait for the forest art test; the
   current greybox scene is too light to provide meaningful GPU measurements.
 - Current M3 scenery contains visibly basic platform forms, inadequately grounded

@@ -1,36 +1,13 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://game/player/player_controller.gd" id="1"]
 [ext_resource type="Script" path="res://game/player/player_visual.gd" id="2"]
+[ext_resource type="Texture2D" path="res://assets/generated/owl_hero_idle_v1.png" id="3_owl"]
+[ext_resource type="Texture2D" path="res://assets/generated/owl_hero_glide_v1.png" id="4_glide"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleCollision"]
 radius = 0.52
 height = 1.8
-
-[sub_resource type="CapsuleMesh" id="BodyMesh"]
-radius = 0.52
-height = 1.8
-
-[sub_resource type="StandardMaterial3D" id="BodyMaterial"]
-albedo_color = Color(0.34, 0.19, 0.11, 1)
-roughness = 0.82
-
-[sub_resource type="SphereMesh" id="EyeMesh"]
-radius = 0.13
-height = 0.26
-
-[sub_resource type="StandardMaterial3D" id="EyeMaterial"]
-albedo_color = Color(0.95, 0.78, 0.18, 1)
-emission_enabled = true
-emission = Color(0.22, 0.12, 0.01, 1)
-emission_energy_multiplier = 0.35
-
-[sub_resource type="BoxMesh" id="WingMesh"]
-size = Vector3(0.95, 0.18, 0.38)
-
-[sub_resource type="StandardMaterial3D" id="WingMaterial"]
-albedo_color = Color(0.24, 0.12, 0.07, 1)
-roughness = 0.9
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
@@ -46,35 +23,19 @@ shape = SubResource("CapsuleCollision")
 [node name="OwlVisual" type="Node3D" parent="."]
 script = ExtResource("2")
 
-[node name="Body" type="MeshInstance3D" parent="OwlVisual"]
-position = Vector3(0, 0.9, 0)
-mesh = SubResource("BodyMesh")
-material_override = SubResource("BodyMaterial")
+[node name="HeroSprite" type="Sprite3D" parent="OwlVisual"]
+position = Vector3(0, 1.12, 0.08)
+pixel_size = 0.00265
+texture = ExtResource("3_owl")
+shaded = false
+double_sided = true
+alpha_cut = 1
 
-[node name="LeftEye" type="MeshInstance3D" parent="OwlVisual"]
-position = Vector3(-0.2, 1.2, 0.47)
-mesh = SubResource("EyeMesh")
-material_override = SubResource("EyeMaterial")
-
-[node name="RightEye" type="MeshInstance3D" parent="OwlVisual"]
-position = Vector3(0.2, 1.2, 0.47)
-mesh = SubResource("EyeMesh")
-material_override = SubResource("EyeMaterial")
-
-[node name="LeftWing" type="Node3D" parent="OwlVisual"]
-position = Vector3(-0.38, 1.0, 0)
-rotation = Vector3(0, 0, 0.45)
-
-[node name="Mesh" type="MeshInstance3D" parent="OwlVisual/LeftWing"]
-position = Vector3(-0.42, 0, 0)
-mesh = SubResource("WingMesh")
-material_override = SubResource("WingMaterial")
-
-[node name="RightWing" type="Node3D" parent="OwlVisual"]
-position = Vector3(0.38, 1.0, 0)
-rotation = Vector3(0, 0, -0.45)
-
-[node name="Mesh" type="MeshInstance3D" parent="OwlVisual/RightWing"]
-position = Vector3(0.42, 0, 0)
-mesh = SubResource("WingMesh")
-material_override = SubResource("WingMaterial")
+[node name="FlightSprite" type="Sprite3D" parent="OwlVisual"]
+visible = false
+position = Vector3(0, 1.18, 0.08)
+pixel_size = 0.0022
+texture = ExtResource("4_glide")
+shaded = false
+double_sided = true
+alpha_cut = 1

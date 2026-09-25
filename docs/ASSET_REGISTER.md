@@ -1,5 +1,24 @@
 # Asset Register
 
+## Original generated assets
+
+### Owl hero idle v1
+
+- File: `assets/generated/owl_hero_idle_v1.png`
+- Source: OpenAI image generation, created for this project on 2026-09-25.
+- Use: Current high-fidelity 2.5D player visual and approved-design candidate.
+- Notes: Original project asset. Transparent cutout; future authored movement poses
+  should preserve this character's identity, palette and proportions.
+
+### Owl hero glide v1
+
+- File: `assets/generated/owl_hero_glide_v1.png`
+- Source: OpenAI image generation, created for this project on 2026-09-25 using
+  the idle hero as the identity reference.
+- Use: Airborne, flap, fall, glide and dive visual prototype.
+- Notes: Original project asset with transparent background. It is a pose proof,
+  not yet a frame-by-frame animation.
+
 Record third-party assets that are actually introduced into the
 project.
 

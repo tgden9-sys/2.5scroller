@@ -24,6 +24,8 @@ M2 - Web Proof (in development on `feature/player-playground`)
 - Web export preset configured for a single-threaded Compatibility-renderer build.
 - Godot 4.7.2 release web export generated and launched successfully through a
   local static server with no browser console errors.
+- Traversal greybox course with staged jump, climb, glide and dive challenges.
+- Automatic checkpoint progression and safe fall recovery across the course.
 
 ## In Development
 

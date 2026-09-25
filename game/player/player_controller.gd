@@ -114,6 +114,9 @@ func reset_to_spawn() -> void:
 	_coyote_timer = 0.0
 	_flap_available = true
 
+func set_respawn_position(position: Vector3) -> void:
+	_spawn_position = position
+
 func _update_state() -> void:
 	var next_state: StringName
 	if is_on_floor():

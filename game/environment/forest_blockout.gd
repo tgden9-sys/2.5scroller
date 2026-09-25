@@ -42,11 +42,13 @@ func _build_forest_layers() -> void:
 		var z := -3.8 - float(index % 2) * 1.4
 		var height := 6.0 + float((index * 5) % 4)
 		_add_tree(Vector3(x, -0.1, z), height, 0.58, LEAF_MID, true)
-	for index in 11:
-		var x := -12.0 + index * 9.0
-		var z := 4.2 + float(index % 3) * 1.5
-		var height := 7.0 + float((index * 3) % 5)
-		_add_tree(Vector3(x, -0.4, z), height, 0.68, LEAF_DARK, true)
+	# The camera-side layer is intentionally sparse. It should frame the route and
+	# create parallax without repeatedly hiding the player or landing surfaces.
+	for index in 6:
+		var x := -18.0 + index * 20.0
+		var z := 6.8 + float(index % 2) * 1.0
+		var height := 11.5 + float((index * 3) % 3)
+		_add_tree(Vector3(x, -0.4, z), height, 0.46, LEAF_DARK, true)
 
 
 func _build_gameplay_dressing() -> void:

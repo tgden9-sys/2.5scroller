@@ -42,9 +42,12 @@ M3 - Forest Art Test (in development on `feature/forest-blockout`)
 
 ## In Development
 
-- Forest composition, palette, scale and readability require hands-on playtesting.
-- The environment is deliberately made from lightweight procedural primitives;
-  selected production-quality nature assets are still to be evaluated.
+- The current forest blockout is a technical experiment and is not accepted as
+  the game's visual direction.
+- A dedicated opening hero shot is now the visual-development priority. Its
+  requirements and approval gate are defined in `docs/VISUAL_TARGET.md`.
+- The Quaternius pack is not accepted for foreground hero assets; it may remain
+  useful for distant supporting scenery.
 
 ## Known Issues
 
@@ -52,6 +55,8 @@ M3 - Forest Art Test (in development on `feature/forest-blockout`)
   for the future rigged owl or authored animation set.
 - A representative performance baseline must wait for the forest art test; the
   current greybox scene is too light to provide meaningful GPU measurements.
+- Current M3 scenery contains visibly basic platform forms, inadequately grounded
+  vegetation and foliage that reads as square cards. It must not be propagated.
 
 ## Last Known-Good State
 
@@ -60,5 +65,5 @@ M3 work is isolated on `feature/forest-blockout`.
 
 ## Next Intended Task
 
-Playtest the first forest mood blockout in desktop and browser builds. Refine the
-composition before selecting any third-party nature assets.
+Create and approve an original concept target for the opening hero shot, then
+build a separate visual-development scene against `docs/VISUAL_TARGET.md`.

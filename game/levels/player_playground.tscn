@@ -1,0 +1,199 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="PackedScene" path="res://game/player/player.tscn" id="1"]
+[ext_resource type="Script" path="res://game/camera/player_camera.gd" id="2"]
+[ext_resource type="Script" path="res://game/levels/player_playground.gd" id="3"]
+
+[sub_resource type="Environment" id="Environment"]
+background_mode = 1
+background_color = Color(0.055, 0.085, 0.12, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.48, 0.58, 0.7, 1)
+ambient_light_energy = 0.7
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="GroundMaterial"]
+albedo_color = Color(0.18, 0.29, 0.23, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="PlatformMaterial"]
+albedo_color = Color(0.32, 0.46, 0.35, 1)
+roughness = 0.85
+
+[sub_resource type="BoxMesh" id="GroundMesh"]
+size = Vector3(16, 1, 4)
+
+[sub_resource type="BoxShape3D" id="GroundShape"]
+size = Vector3(16, 1, 4)
+
+[sub_resource type="BoxMesh" id="MidGroundMesh"]
+size = Vector3(10, 1, 4)
+
+[sub_resource type="BoxShape3D" id="MidGroundShape"]
+size = Vector3(10, 1, 4)
+
+[sub_resource type="BoxMesh" id="PlatformMesh"]
+size = Vector3(4.5, 0.6, 4)
+
+[sub_resource type="BoxShape3D" id="PlatformShape"]
+size = Vector3(4.5, 0.6, 4)
+
+[sub_resource type="BoxMesh" id="SmallPlatformMesh"]
+size = Vector3(3.2, 0.6, 4)
+
+[sub_resource type="BoxShape3D" id="SmallPlatformShape"]
+size = Vector3(3.2, 0.6, 4)
+
+[node name="PlayerPlayground" type="Node3D"]
+script = ExtResource("3")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-48, -28, 0)
+light_color = Color(1, 0.88, 0.7, 1)
+light_energy = 1.35
+shadow_enabled = true
+
+[node name="StartGround" type="StaticBody3D" parent="."]
+position = Vector3(-10, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="StartGround"]
+position = Vector3(0, -0.5, 0)
+mesh = SubResource("GroundMesh")
+material_override = SubResource("GroundMaterial")
+
+[node name="Collision" type="CollisionShape3D" parent="StartGround"]
+position = Vector3(0, -0.5, 0)
+shape = SubResource("GroundShape")
+
+[node name="LandingGround" type="StaticBody3D" parent="."]
+position = Vector3(7, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="LandingGround"]
+position = Vector3(0, -0.5, 0)
+mesh = SubResource("MidGroundMesh")
+material_override = SubResource("GroundMaterial")
+
+[node name="Collision" type="CollisionShape3D" parent="LandingGround"]
+position = Vector3(0, -0.5, 0)
+shape = SubResource("MidGroundShape")
+
+[node name="StepOne" type="StaticBody3D" parent="."]
+position = Vector3(14, 1.4, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="StepOne"]
+mesh = SubResource("PlatformMesh")
+material_override = SubResource("PlatformMaterial")
+
+[node name="Collision" type="CollisionShape3D" parent="StepOne"]
+shape = SubResource("PlatformShape")
+
+[node name="StepTwo" type="StaticBody3D" parent="."]
+position = Vector3(19, 3.1, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="StepTwo"]
+mesh = SubResource("SmallPlatformMesh")
+material_override = SubResource("PlatformMaterial")
+
+[node name="Collision" type="CollisionShape3D" parent="StepTwo"]
+shape = SubResource("SmallPlatformShape")
+
+[node name="HighPerch" type="StaticBody3D" parent="."]
+position = Vector3(24, 5.0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="HighPerch"]
+mesh = SubResource("PlatformMesh")
+material_override = SubResource("PlatformMaterial")
+
+[node name="Collision" type="CollisionShape3D" parent="HighPerch"]
+shape = SubResource("PlatformShape")
+
+[node name="GlideLanding" type="StaticBody3D" parent="."]
+position = Vector3(49, 2.5, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="GlideLanding"]
+mesh = SubResource("MidGroundMesh")
+material_override = SubResource("PlatformMaterial")
+
+[node name="Collision" type="CollisionShape3D" parent="GlideLanding"]
+shape = SubResource("MidGroundShape")
+
+[node name="DiveStep" type="StaticBody3D" parent="."]
+position = Vector3(55, 4.8, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="DiveStep"]
+mesh = SubResource("SmallPlatformMesh")
+material_override = SubResource("PlatformMaterial")
+
+[node name="Collision" type="CollisionShape3D" parent="DiveStep"]
+shape = SubResource("SmallPlatformShape")
+
+[node name="DivePerch" type="StaticBody3D" parent="."]
+position = Vector3(60, 7, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="DivePerch"]
+mesh = SubResource("SmallPlatformMesh")
+material_override = SubResource("PlatformMaterial")
+
+[node name="Collision" type="CollisionShape3D" parent="DivePerch"]
+shape = SubResource("SmallPlatformShape")
+
+[node name="FinishGround" type="StaticBody3D" parent="."]
+position = Vector3(68, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="FinishGround"]
+position = Vector3(0, -0.5, 0)
+mesh = SubResource("GroundMesh")
+material_override = SubResource("GroundMaterial")
+
+[node name="Collision" type="CollisionShape3D" parent="FinishGround"]
+position = Vector3(0, -0.5, 0)
+shape = SubResource("GroundShape")
+
+[node name="Player" parent="." instance=ExtResource("1")]
+position = Vector3(-8, 0.1, 0)
+
+[node name="Camera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+position = Vector3(-8, 4.5, 14)
+current = true
+fov = 52.0
+target = NodePath("../Player")
+script = ExtResource("2")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Margin" type="MarginContainer" parent="UI"]
+offset_right = 760.0
+offset_bottom = 220.0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 28
+
+[node name="VBox" type="VBoxContainer" parent="UI/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="UI/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.85, 0.63, 1)
+theme_override_font_sizes/font_size = 30
+text = "PLAYER PLAYGROUND  /  M1"
+
+[node name="Controls" type="Label" parent="UI/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86, 0.9, 0.92, 1)
+theme_override_font_sizes/font_size = 18
+text = "A / D or ← / →  MOVE    SPACE or ↑  JUMP · FLAP · GLIDE    S or ↓  DIVE    R  RESET"
+
+[node name="State" type="Label" parent="UI/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.47, 0.78, 0.64, 1)
+theme_override_font_sizes/font_size = 17
+text = "STATE  IDLE"
+
+[node name="Objective" type="Label" parent="UI/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.69, 0.3, 1)
+theme_override_font_sizes/font_size = 17
+text = "STAGE 1  ·  CLEAR THE GAP"

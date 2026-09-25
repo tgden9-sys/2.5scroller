@@ -12,6 +12,16 @@ https://chatgpt.com/s/m_6ab6620d658c8191b988b4b973689aed
 The inspiration establishes mood and composition. The game must use original
 assets and an original layout rather than copying the image literally.
 
+Original production concept target:
+
+`docs/reference/forest_hero_target_v1.png`
+
+This generated concept is the first approval candidate for the hero-shot build.
+If Tom accepts it, it becomes the binding target. It translates the inspiration
+into an original composition with a rooted foreground tree, natural log route,
+rock landing, waterfall focal point, reflective water and warm/cool depth
+separation.
+
 ## Hero Shot
 
 The first approved environment will be one 16:9 gameplay-camera composition near
@@ -60,4 +70,3 @@ Do not propagate the visual style to the full course until the opening shot:
 2. Meets every required-quality item above.
 3. Runs successfully in the browser build.
 4. Receives Tom's explicit visual approval.
-

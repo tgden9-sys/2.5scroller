@@ -6,6 +6,8 @@ extends Camera3D
 @export var look_ahead_distance := 2.2
 @export var vertical_dead_zone := 1.0
 @export var min_height := 3.5
+@export var min_x := -INF
+@export var max_x := INF
 
 var _base_z: float
 
@@ -23,5 +25,6 @@ func _process(delta: float) -> void:
 	if absf(vertical_error) > vertical_dead_zone:
 		desired.y += vertical_error - signf(vertical_error) * vertical_dead_zone
 	desired.y = maxf(desired.y, min_height)
+	desired.x = clampf(desired.x, min_x, max_x)
 	desired.z = _base_z
 	global_position = global_position.lerp(desired, 1.0 - exp(-follow_speed * delta))

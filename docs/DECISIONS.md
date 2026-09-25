@@ -128,3 +128,20 @@ can supply the required security headers.
 
 Status:
 Accepted for the initial web proof.
+
+---
+
+## DEC-010 - Hybrid 2.5D Environment Construction
+
+Decision:
+Build long levels from real traversable 3D foreground geometry plus multiple
+depth-separated 3D scenic layers. Use concept images as visual targets or
+temporary shot backdrops, not as a single scrolling level image.
+
+Reason:
+This preserves physical interaction and camera parallax while allowing distant
+scenery to carry much of the atmosphere within the desktop-web budget.
+
+Status:
+Accepted for the forest vertical-slice prototype; visual quality remains subject
+to playtest approval.

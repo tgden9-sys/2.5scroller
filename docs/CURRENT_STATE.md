@@ -2,7 +2,8 @@
 
 ## Milestone
 
-M3 - Forest Art Test (in development on `feature/forest-blockout`)
+M3/M5 - Forest gameplay vertical-slice prototype (in development on
+`feature/forest-blockout`)
 
 ## Working
 
@@ -44,13 +45,20 @@ M3 - Forest Art Test (in development on `feature/forest-blockout`)
   collisions over an owl-free scenic plate; the movement course remains intact.
 - Hero mockup plate layering corrected so the real 3D owl renders visibly in front
   of the scenic plate.
+- A genuine scrolling forest demo now replaces the static hero mockup as the main
+  scene. It is a roughly two-minute route with three traversal beats, real 3D
+  terrain and collisions, perspective depth layers, water hazards, checkpoints,
+  six optional fireflies and a visible old-nest goal.
+- The original movement playground and hero composition mockup remain available
+  as separate scenes for comparison; neither was overwritten.
 
 ## In Development
 
 - The current forest blockout is a technical experiment and is not accepted as
   the game's visual direction.
-- A dedicated opening hero shot is now the visual-development priority. Its
-  requirements and approval gate are defined in `docs/VISUAL_TARGET.md`.
+- The playable vertical slice is now the evaluation priority: it should establish
+  whether the route structure, traversal rhythm and hybrid 2.5D presentation are
+  worth developing before production art begins.
 - The Quaternius pack is not accepted for foreground hero assets; it may remain
   useful for distant supporting scenery.
 
@@ -70,5 +78,6 @@ M3 work is isolated on `feature/forest-blockout`.
 
 ## Next Intended Task
 
-Playtest the interactive hero mockup for composition and player readability, then
-replace its foreground plate with authored 3D log, root and rock geometry.
+Tom playtests the forest vertical slice and evaluates the game proposition—not
+its placeholder geometry—then chooses which traversal beat deserves a polished
+art pass and which mechanics need revision.

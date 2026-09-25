@@ -13,6 +13,7 @@ var _state: StringName = &"idle"
 var _time := 0.0
 var _landing_squash := 0.0
 var _previous_airborne := false
+var _facing_direction := 1.0
 
 func _ready() -> void:
 	controller.movement_state_changed.connect(_on_movement_state_changed)
@@ -25,9 +26,12 @@ func _process(delta: float) -> void:
 		_landing_squash = landing_squash_amount
 	_previous_airborne = airborne
 	_landing_squash = move_toward(_landing_squash, 0.0, landing_recovery_speed * delta)
+	if absf(controller.velocity.x) > 0.1:
+		_facing_direction = signf(controller.velocity.x)
 
 	var target_rotation := _target_body_rotation()
 	rotation.z = lerp_angle(rotation.z, target_rotation, _blend_weight(delta))
+	rotation.y = lerp_angle(rotation.y, _facing_direction * PI * 0.5, _blend_weight(delta))
 	_update_wings(delta)
 	_update_body_motion()
 
@@ -78,8 +82,7 @@ func _update_body_motion() -> void:
 	position.y = idle_bob - _landing_squash * 0.45
 	var stretch := 1.0 + _landing_squash
 	var squash := 1.0 - _landing_squash
-	var facing := signf(scale.x) if not is_zero_approx(scale.x) else 1.0
-	scale = Vector3(stretch * facing, squash, stretch)
+	scale = Vector3(stretch, squash, stretch)
 
 func _blend_weight(delta: float) -> float:
 	return 1.0 - exp(-pose_blend_speed * delta)

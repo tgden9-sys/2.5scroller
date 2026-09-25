@@ -77,8 +77,6 @@ func _apply_horizontal_movement(delta: float) -> void:
 	if is_zero_approx(input_axis):
 		rate = ground_deceleration if grounded else air_deceleration
 	velocity.x = move_toward(velocity.x, target_speed, rate * delta)
-	if absf(input_axis) > 0.01:
-		$OwlVisual.scale.x = absf($OwlVisual.scale.x) * signf(input_axis)
 
 func _apply_vertical_movement(delta: float, was_on_floor: bool) -> void:
 	var can_ground_jump := was_on_floor or _coyote_timer > 0.0

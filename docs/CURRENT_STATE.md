@@ -2,7 +2,7 @@
 
 ## Milestone
 
-M1 - Player Playground (in development on `feature/player-playground`)
+M2 - Web Proof (in development on `feature/player-playground`)
 
 ## Working
 
@@ -21,6 +21,9 @@ M1 - Player Playground (in development on `feature/player-playground`)
 - On-screen controls and movement-state readout for playtesting.
 - Procedural placeholder animation for idle, running, rising, falling, flap,
   glide, dive and landing states.
+- Web export preset configured for a single-threaded Compatibility-renderer build.
+- Godot 4.7.2 release web export generated and launched successfully through a
+  local static server with no browser console errors.
 
 ## In Development
 
@@ -31,7 +34,9 @@ M1 - Player Playground (in development on `feature/player-playground`)
 
 - Placeholder animation uses simple procedural transforms and is not a replacement
   for the future rigged owl or authored animation set.
-- Browser export has not yet been configured or measured.
+- Browser controls require hands-on playtesting outside the automated smoke test.
+- A representative performance baseline must wait for the forest art test; the
+  current greybox scene is too light to provide meaningful GPU measurements.
 
 ## Last Known-Good State
 

@@ -111,3 +111,19 @@ presentation and a more sophisticated path constraint in later levels.
 
 Status:
 Provisional - appropriate for M1.
+
+---
+
+## DEC-009 - Single-Threaded Initial Web Export
+
+Decision:
+Use Godot's non-threaded web export template for the initial browser proof.
+
+Reason:
+It runs on ordinary static hosting without cross-origin isolation headers. This
+keeps early sharing and deployment simple. A threaded build may be reconsidered
+later if profiling demonstrates a worthwhile performance benefit and the host
+can supply the required security headers.
+
+Status:
+Accepted for the initial web proof.

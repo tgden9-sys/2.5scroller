@@ -80,3 +80,34 @@ character quality and browser viability.
 
 Status:
 Accepted.
+
+---
+
+## DEC-007 - Initial Wing Control Scheme
+
+Decision:
+For the M1 prototype, Space is contextual: press to jump, press once while
+airborne to flap, and hold after the flap while descending to glide. S or Down
+prototypes a dive.
+
+Reason:
+This keeps the complete traversal prototype playable with the initial keyboard
+control set while exposing each movement state separately for evaluation.
+
+Status:
+Provisional - requires playtesting before acceptance.
+
+---
+
+## DEC-008 - Hard Gameplay Plane Constraint
+
+Decision:
+The M1 player is constrained to world Z = 0 after physics movement. The level
+remains fully 3D and the camera uses perspective projection.
+
+Reason:
+This provides predictable side-scrolling controls while leaving room for 3D
+presentation and a more sophisticated path constraint in later levels.
+
+Status:
+Provisional - appropriate for M1.

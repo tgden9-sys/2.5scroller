@@ -54,6 +54,8 @@ func _build_forest_layers() -> void:
 func _build_gameplay_dressing() -> void:
 	var moss_material := _material(MOSS_COLOR, 0.95)
 	var stone_material := _material(Color(0.20, 0.25, 0.21), 0.9)
+	var earth_material := _material(Color(0.16, 0.115, 0.075), 1.0)
+	var bark_material := _material(BARK_LIGHT, 1.0)
 	var moss_caps := [
 		[Vector3(-10, 0.035, 0), Vector3(16, 0.07, 4.05)],
 		[Vector3(7, 0.035, 0), Vector3(10, 0.07, 4.05)],
@@ -68,11 +70,66 @@ func _build_gameplay_dressing() -> void:
 	for cap in moss_caps:
 		_add_box(cap[0], cap[1], moss_material)
 
+	_dress_ground_bank(Vector3(-10, -0.48, 0), 16.0, earth_material, stone_material, moss_material)
+	_dress_ground_bank(Vector3(7, -0.48, 0), 10.0, earth_material, stone_material, moss_material)
+	_dress_log(Vector3(14, 1.4, 0), 4.5, bark_material, moss_material)
+	_dress_log(Vector3(19, 3.1, 0), 3.2, bark_material, moss_material)
+	_dress_log(Vector3(24, 5.0, 0), 4.5, bark_material, moss_material)
+	_dress_ground_bank(Vector3(49, 2.32, 0), 10.0, earth_material, stone_material, moss_material)
+	_dress_log(Vector3(55, 4.8, 0), 3.2, bark_material, moss_material)
+	_dress_log(Vector3(60, 7.0, 0), 3.2, bark_material, moss_material)
+	_dress_ground_bank(Vector3(68, -0.48, 0), 16.0, earth_material, stone_material, moss_material)
+
 	for position in [Vector3(-5, 0.3, 1.2), Vector3(3.2, 0.35, -1.3), Vector3(12.2, 1.8, -1.2), Vector3(50.5, 3.2, 1.3), Vector3(70, 0.4, -1.3)]:
 		_add_rock(position, stone_material, moss_material)
 
 	for position in [Vector3(-13, 0.1, 1.6), Vector3(-2, 0.1, -1.6), Vector3(9, 0.1, 1.6), Vector3(47, 2.9, -1.6), Vector3(66, 0.1, 1.6), Vector3(73, 0.1, -1.6)]:
 		_add_fern(position)
+
+
+func _dress_ground_bank(center: Vector3, width: float, earth_material: Material, stone_material: Material, moss_material: Material) -> void:
+	# The original box remains the collision-bearing core. Overlapping low-poly
+	# forms hide its ruler-straight edge and establish a soft woodland silhouette.
+	var pieces := int(width / 1.55) + 1
+	for index in pieces:
+		var ratio := float(index) / maxf(float(pieces - 1), 1.0)
+		var x := center.x - width * 0.5 + ratio * width
+		var wobble := sin(index * 2.17 + center.x) * 0.12
+		var scale_value := Vector3(1.05 + float(index % 3) * 0.18, 0.62 + float(index % 2) * 0.12, 2.0)
+		var material := earth_material if index % 3 else stone_material
+		_add_sphere(Vector3(x, center.y + wobble, center.z), scale_value, material)
+		if index % 2 == 0:
+			_add_sphere(Vector3(x, center.y + 0.55 + wobble, center.z), Vector3(scale_value.x * 0.82, 0.12, 1.65), moss_material)
+
+
+func _dress_log(center: Vector3, length: float, bark_material: Material, moss_material: Material) -> void:
+	var log_mesh := CylinderMesh.new()
+	log_mesh.top_radius = 0.46
+	log_mesh.bottom_radius = 0.52
+	log_mesh.height = length
+	log_mesh.radial_segments = 10
+	var log := MeshInstance3D.new()
+	log.mesh = log_mesh
+	log.position = center
+	log.rotation_degrees.z = 90.0
+	log.material_override = bark_material
+	add_child(log)
+
+	# A broken branch and irregular moss clumps stop each log reading as a tube.
+	var branch_mesh := CylinderMesh.new()
+	branch_mesh.top_radius = 0.08
+	branch_mesh.bottom_radius = 0.15
+	branch_mesh.height = 0.9
+	branch_mesh.radial_segments = 7
+	var branch := MeshInstance3D.new()
+	branch.mesh = branch_mesh
+	branch.position = center + Vector3(-length * 0.18, 0.35, -0.25)
+	branch.rotation_degrees = Vector3(28.0, 0.0, -38.0)
+	branch.material_override = bark_material
+	add_child(branch)
+	for index in 4:
+		var x_offset := -length * 0.36 + index * length * 0.24
+		_add_sphere(center + Vector3(x_offset, 0.48, -0.06 + index % 2 * 0.12), Vector3(length * 0.14, 0.10, 0.42), moss_material)
 
 
 func _build_water_feature() -> void:

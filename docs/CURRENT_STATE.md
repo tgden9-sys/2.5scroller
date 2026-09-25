@@ -33,6 +33,8 @@ M3 - Forest Art Test (in development on `feature/forest-blockout`)
   rocks, foliage movement, water, waterfall and mist forms.
 - Foreground tree spacing and canopy height adjusted after the first readability
   playtest so the player and landing surfaces remain visible.
+- Greybox platforms now have procedural natural silhouettes: uneven earth and
+  stone banks for ground, plus mossy fallen-log shells for stepping platforms.
 
 ## In Development
 

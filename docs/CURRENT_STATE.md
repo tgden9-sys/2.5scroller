@@ -19,6 +19,8 @@ M1 - Player Playground (in development on `feature/player-playground`)
 - Smooth player-follow camera with horizontal look-ahead and vertical dead zone.
 - Lit greybox course with ground and ascending platforms.
 - On-screen controls and movement-state readout for playtesting.
+- Procedural placeholder animation for idle, running, rising, falling, flap,
+  glide, dive and landing states.
 
 ## In Development
 
@@ -27,7 +29,8 @@ M1 - Player Playground (in development on `feature/player-playground`)
 
 ## Known Issues
 
-- The placeholder owl has no animation; movement states are exposed for later animation work.
+- Placeholder animation uses simple procedural transforms and is not a replacement
+  for the future rigged owl or authored animation set.
 - Browser export has not yet been configured or measured.
 
 ## Last Known-Good State

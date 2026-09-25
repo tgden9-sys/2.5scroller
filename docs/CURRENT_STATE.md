@@ -39,6 +39,9 @@ M3 - Forest Art Test (in development on `feature/forest-blockout`)
   and composed into a representative grove near the start for in-game evaluation.
 - Opening area is being rebuilt as a hero composition with continuous terrain,
   a designed sky, distant layered landforms, atmospheric fog and warm/cool lighting.
+- Tom approved `docs/reference/forest_hero_target_v1.png` as the binding visual
+  target. A separate interactive hero mockup now layers the real player and hidden
+  collisions over an owl-free scenic plate; the movement course remains intact.
 
 ## In Development
 
@@ -65,5 +68,5 @@ M3 work is isolated on `feature/forest-blockout`.
 
 ## Next Intended Task
 
-Create and approve an original concept target for the opening hero shot, then
-build a separate visual-development scene against `docs/VISUAL_TARGET.md`.
+Playtest the interactive hero mockup for composition and player readability, then
+replace its foreground plate with authored 3D log, root and rock geometry.

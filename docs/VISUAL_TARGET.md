@@ -16,11 +16,15 @@ Original production concept target:
 
 `docs/reference/forest_hero_target_v1.png`
 
-This generated concept is the first approval candidate for the hero-shot build.
-If Tom accepts it, it becomes the binding target. It translates the inspiration
-into an original composition with a rooted foreground tree, natural log route,
-rock landing, waterfall focal point, reflective water and warm/cool depth
-separation.
+Tom approved this generated concept as the binding target on 2026-09-25. It
+translates the inspiration into an original composition with a rooted foreground
+tree, natural log route, rock landing, waterfall focal point, reflective water and
+warm/cool depth separation.
+
+The first interactive visual mockup uses an owl-free version of this composition
+as a scenic plate at `assets/generated/forest_hero_backplate_v1.png`, with the real
+player and simple invisible collision layered over it. This validates framing and
+gameplay readability; it is not a substitute for the later authored 3D foreground.
 
 ## Hero Shot
 

@@ -35,6 +35,8 @@ M3 - Forest Art Test (in development on `feature/forest-blockout`)
   playtest so the player and landing surfaces remain visible.
 - Greybox platforms now have procedural natural silhouettes: uneven earth and
   stone banks for ground, plus mossy fallen-log shells for stepping platforms.
+- A controlled CC0 subset of the Quaternius Stylized Nature MegaKit is imported
+  and composed into a representative grove near the start for in-game evaluation.
 
 ## In Development
 

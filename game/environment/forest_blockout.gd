@@ -1,6 +1,13 @@
 class_name ForestBlockout
 extends Node3D
 
+const COMMON_TREE_SCENE := preload("res://assets/third_party/quaternius_stylized_nature/glTF/CommonTree_1.gltf")
+const TWISTED_TREE_SCENE := preload("res://assets/third_party/quaternius_stylized_nature/glTF/TwistedTree_2.gltf")
+const ROCK_SCENE := preload("res://assets/third_party/quaternius_stylized_nature/glTF/Rock_Medium_1.gltf")
+const FERN_SCENE := preload("res://assets/third_party/quaternius_stylized_nature/glTF/Fern_1.gltf")
+const GRASS_SCENE := preload("res://assets/third_party/quaternius_stylized_nature/glTF/Grass_Common_Short.gltf")
+const BUSH_SCENE := preload("res://assets/third_party/quaternius_stylized_nature/glTF/Bush_Common.gltf")
+
 var _sway_groups: Array[Node3D] = []
 var _water_material: StandardMaterial3D
 var _time := 0.0
@@ -17,6 +24,7 @@ func _ready() -> void:
 	_build_forest_layers()
 	_build_gameplay_dressing()
 	_build_water_feature()
+	_build_asset_preview_grove()
 
 
 func _process(delta: float) -> void:
@@ -142,6 +150,31 @@ func _build_water_feature() -> void:
 	for index in 5:
 		var mist := _add_sphere(Vector3(36.0 + index * 1.5, -1.65 + index % 2 * 0.25, -2.2), Vector3(2.3, 0.55, 1.2), mist_material)
 		_sway_groups.append(mist)
+
+
+func _build_asset_preview_grove() -> void:
+	# A compact representative area near the start lets us judge the pack in the
+	# actual game before replacing the full procedural blockout.
+	_add_asset(COMMON_TREE_SCENE, Vector3(-13.5, 0.0, -3.2), Vector3.ONE * 1.05, 0.15)
+	_add_asset(COMMON_TREE_SCENE, Vector3(-4.0, 0.0, -4.2), Vector3.ONE * 0.82, -0.55)
+	_add_asset(TWISTED_TREE_SCENE, Vector3(5.0, 0.0, -6.0), Vector3.ONE * 0.48, 0.32)
+	_add_asset(ROCK_SCENE, Vector3(-6.0, 0.0, -1.35), Vector3.ONE * 0.62, -0.25)
+	_add_asset(ROCK_SCENE, Vector3(1.8, 0.0, 1.25), Vector3(0.42, 0.58, 0.50), 0.65)
+	_add_asset(BUSH_SCENE, Vector3(-1.0, 0.0, -1.45), Vector3.ONE * 0.82, 0.18)
+	_add_asset(BUSH_SCENE, Vector3(8.8, 0.0, 1.35), Vector3.ONE * 0.68, -0.35)
+	_add_asset(FERN_SCENE, Vector3(-11.0, 0.0, 1.45), Vector3.ONE * 0.22, 0.2)
+	_add_asset(FERN_SCENE, Vector3(5.5, 0.0, -1.5), Vector3.ONE * 0.18, -0.6)
+	for index in 7:
+		_add_asset(GRASS_SCENE, Vector3(-12.0 + index * 3.2, 0.02, -1.65 + index % 2 * 3.2), Vector3.ONE * (0.65 + index % 3 * 0.10), index * 0.7)
+
+
+func _add_asset(scene: PackedScene, position: Vector3, scale_value: Vector3, yaw: float) -> Node3D:
+	var instance := scene.instantiate() as Node3D
+	instance.position = position
+	instance.scale = scale_value
+	instance.rotation.y = yaw
+	add_child(instance)
+	return instance
 
 
 func _add_tree(position: Vector3, height: float, width: float, leaf_color: Color, animated: bool) -> void:

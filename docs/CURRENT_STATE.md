@@ -26,6 +26,8 @@ M2 - Web Proof (in development on `feature/player-playground`)
   local static server with no browser console errors.
 - Traversal greybox course with staged jump, climb, glide and dive challenges.
 - Automatic checkpoint progression and safe fall recovery across the course.
+- Full browser course completed successfully by Tom, including the completion
+  state. Movement feel and the M1/M2 baseline were approved.
 
 ## In Development
 
@@ -36,7 +38,6 @@ M2 - Web Proof (in development on `feature/player-playground`)
 
 - Placeholder animation uses simple procedural transforms and is not a replacement
   for the future rigged owl or authored animation set.
-- Browser controls require hands-on playtesting outside the automated smoke test.
 - A representative performance baseline must wait for the forest art test; the
   current greybox scene is too light to provide meaningful GPU measurements.
 
@@ -47,6 +48,6 @@ M2 - Web Proof (in development on `feature/player-playground`)
 
 ## Next Intended Task
 
-Open the playground in Godot 4.7.x, resolve any engine-version import issues, and
-playtest movement feel. Tune the exported controller values based on feedback,
-then complete an early desktop-web export and performance baseline.
+Review and merge the completed `feature/player-playground` pull request after
+final inspection. Begin M3 on a new `feature/forest-blockout` branch, preserving
+the approved player and web baseline.

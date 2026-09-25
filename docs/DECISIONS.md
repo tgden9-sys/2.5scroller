@@ -95,7 +95,7 @@ This keeps the complete traversal prototype playable with the initial keyboard
 control set while exposing each movement state separately for evaluation.
 
 Status:
-Provisional - requires playtesting before acceptance.
+Accepted as the M1 baseline after desktop and browser playtesting.
 
 ---
 
@@ -110,7 +110,8 @@ This provides predictable side-scrolling controls while leaving room for 3D
 presentation and a more sophisticated path constraint in later levels.
 
 Status:
-Provisional - appropriate for M1.
+Accepted for the M1/M2 playground. A path-based constraint may supersede it in
+later production levels.
 
 ---
 

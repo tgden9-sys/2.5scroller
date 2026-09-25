@@ -21,6 +21,7 @@ const LEAF_LIGHT := Color(0.29, 0.52, 0.25)
 
 
 func _ready() -> void:
+	_build_hero_landscape()
 	_build_forest_layers()
 	_build_gameplay_dressing()
 	_build_water_feature()
@@ -40,23 +41,40 @@ func _process(delta: float) -> void:
 func _build_forest_layers() -> void:
 	# Repeated silhouettes give the blockout foreground, midground and background
 	# depth without committing the project to a production asset pack.
-	for index in 18:
-		var x := -18.0 + index * 6.0
+	for index in 14:
+		var x := 12.0 + index * 6.0
 		var z := -8.5 - float(index % 3) * 3.2
 		var height := 8.0 + float((index * 7) % 5)
 		_add_tree(Vector3(x, -0.2, z), height, 0.75, LEAF_DARK, false)
-	for index in 15:
-		var x := -14.0 + index * 7.0
+	for index in 12:
+		var x := 14.0 + index * 7.0
 		var z := -3.8 - float(index % 2) * 1.4
 		var height := 6.0 + float((index * 5) % 4)
 		_add_tree(Vector3(x, -0.1, z), height, 0.58, LEAF_MID, true)
 	# The camera-side layer is intentionally sparse. It should frame the route and
 	# create parallax without repeatedly hiding the player or landing surfaces.
-	for index in 6:
-		var x := -18.0 + index * 20.0
+	for index in 4:
+		var x := 18.0 + index * 20.0
 		var z := 6.8 + float(index % 2) * 1.0
 		var height := 11.5 + float((index * 3) % 3)
 		_add_tree(Vector3(x, -0.4, z), height, 0.46, LEAF_DARK, true)
+
+
+func _build_hero_landscape() -> void:
+	# Continuous land and overlapping distant forms prevent isolated props from
+	# appearing to float against the sky. This is a visual backdrop only.
+	var distant_earth := _material(Color(0.055, 0.13, 0.12), 1.0)
+	var distant_forest := _material(Color(0.07, 0.19, 0.16), 1.0)
+	var distant_light := _material(Color(0.12, 0.26, 0.20), 1.0)
+	_add_box(Vector3(30.0, -4.2, -13.5), Vector3(125.0, 7.0, 8.0), distant_earth)
+	for index in 9:
+		var x := -24.0 + index * 17.0
+		var height := 5.5 + float(index % 4) * 1.2
+		_add_sphere(Vector3(x, -0.8 + index % 2 * 0.4, -12.0), Vector3(13.0, height, 3.8), distant_forest if index % 2 else distant_light)
+	# Low banks behind the opening close the horizon while leaving the owl and
+	# playable silhouette against a brighter, uncluttered middle value.
+	for index in 7:
+		_add_sphere(Vector3(-22.0 + index * 7.5, -1.55, -7.0), Vector3(5.2, 2.0 + index % 2 * 0.5, 2.7), distant_forest)
 
 
 func _build_gameplay_dressing() -> void:
@@ -158,6 +176,7 @@ func _build_asset_preview_grove() -> void:
 	_add_asset(COMMON_TREE_SCENE, Vector3(-13.5, 0.0, -3.2), Vector3.ONE * 1.05, 0.15)
 	_add_asset(COMMON_TREE_SCENE, Vector3(-4.0, 0.0, -4.2), Vector3.ONE * 0.82, -0.55)
 	_add_asset(TWISTED_TREE_SCENE, Vector3(5.0, 0.0, -6.0), Vector3.ONE * 0.48, 0.32)
+	_add_asset(COMMON_TREE_SCENE, Vector3(10.5, 0.0, -5.0), Vector3.ONE * 0.72, 0.55)
 	_add_asset(ROCK_SCENE, Vector3(-6.0, 0.0, -1.35), Vector3.ONE * 0.62, -0.25)
 	_add_asset(ROCK_SCENE, Vector3(1.8, 0.0, 1.25), Vector3(0.42, 0.58, 0.50), 0.65)
 	_add_asset(BUSH_SCENE, Vector3(-1.0, 0.0, -1.45), Vector3.ONE * 0.82, 0.18)

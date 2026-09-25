@@ -37,6 +37,8 @@ M3 - Forest Art Test (in development on `feature/forest-blockout`)
   stone banks for ground, plus mossy fallen-log shells for stepping platforms.
 - A controlled CC0 subset of the Quaternius Stylized Nature MegaKit is imported
   and composed into a representative grove near the start for in-game evaluation.
+- Opening area is being rebuilt as a hero composition with continuous terrain,
+  a designed sky, distant layered landforms, atmospheric fog and warm/cool lighting.
 
 ## In Development
 

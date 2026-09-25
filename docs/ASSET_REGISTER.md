@@ -29,8 +29,9 @@ For each asset record:
 - **Location:** `assets/third_party/quaternius_stylized_nature/`
 - **Imported subset:** Common Tree 1, Twisted Tree 2, Medium Rock 1, Fern 1,
   Common Short Grass and Common Bush, with their required textures.
-- **Modifications:** No source meshes or textures modified. Instances are scaled,
-  rotated and composed in Godot for the M3 representative grove.
+- **Modifications:** No source meshes or texture pixels modified. Instances are
+  scaled, rotated and composed in Godot. Oversized 2048px textures are imported
+  with a 1024px size limit for this browser-focused test.
 - **Notes:** The included `License_Standard.txt` is retained alongside the assets.
   Only a small evaluation subset of the 68-model free package is committed to
   control repository and web-build size.

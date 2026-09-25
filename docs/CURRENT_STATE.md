@@ -42,6 +42,8 @@ M3 - Forest Art Test (in development on `feature/forest-blockout`)
 - Tom approved `docs/reference/forest_hero_target_v1.png` as the binding visual
   target. A separate interactive hero mockup now layers the real player and hidden
   collisions over an owl-free scenic plate; the movement course remains intact.
+- Hero mockup plate layering corrected so the real 3D owl renders visibly in front
+  of the scenic plate.
 
 ## In Development
 
